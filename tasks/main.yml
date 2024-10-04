@@ -1,0 +1,4 @@
+---
+- name: IDE specific
+  include_tasks: "ide:/vscode.yml"
+  when: vscode

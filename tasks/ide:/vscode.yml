@@ -1,0 +1,10 @@
+---
+
+#https://marketplace.visualstudio.com/items?itemName=leizongmin.node-module-intellisense
+
+- name: Node.js extensions - VSCode
+  ansible.builtin.shell: "code --install-extension {{ item }}"
+  args:
+    creates: "{{ ansible_env.HOME }}/.vscode/extensions/{{ item | lower }}*"
+  loop:
+  - leizongmin.node-module-intellisense
