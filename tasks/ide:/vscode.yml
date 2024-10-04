@@ -1,10 +1,23 @@
 ---
+# Bundle
+#https://marketplace.visualstudio.com/items?itemName=nodesource.vscode-for-node-js-development-pack
 
-#https://marketplace.visualstudio.com/items?itemName=leizongmin.node-module-intellisense
+- name: VS Code for Node.js - Development Pack
+  ansible.builtin.shell: "code --install-extension {{ item }}"
+  args:
+    creates: "{{ ansible_env.HOME }}/.vscode/extensions/{{ item | lower }}*"
+  loop:
+  - nodesource.vscode-for-node-js-development-pack
+  when: bundle_Nodejs_Development_Pack
+
+# Extension
+#https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense
+#https://marketplace.visualstudio.com/items?itemName=miramac.vscode-exec-node
 
 - name: Node.js extensions - VSCode
   ansible.builtin.shell: "code --install-extension {{ item }}"
   args:
     creates: "{{ ansible_env.HOME }}/.vscode/extensions/{{ item | lower }}*"
   loop:
-  - leizongmin.node-module-intellisense
+  - christian-kohler.npm-intellisense
+  - miramac.vscode-exec-node
